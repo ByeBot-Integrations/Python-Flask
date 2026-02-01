@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result - Flask Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f0f;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon.success {
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .icon.success svg {
+      color: #10b981;
+    }
+
+    h1 {
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .message {
+      color: #a0a0a0;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .details {
+      background: #0f0f0f;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .details-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .details-item:last-child {
+      border-bottom: none;
+    }
+
+    .details-label {
+      color: #666666;
+      font-size: 13px;
+    }
+
+    .details-value {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon success">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <h1>Success!</h1>
+    <p class="message">{{ message }}</p>
+
+    <div class="details">
+      <div class="details-item">
+        <span class="details-label">Username</span>
+        <span class="details-value">{{ username }}</span>
+      </div>
+      <div class="details-item">
+        <span class="details-label">CAPTCHA</span>
+        <span class="details-value" style="color: #10b981;">Verified</span>
+      </div>
+    </div>
+
+    <a href="/">Back to Form</a>
+  </div>
+</body>
+</html>
