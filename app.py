@@ -4,16 +4,16 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Configuration - update these values for your setup
-CAPTCHACAT_API_KEY = ""
-CAPTCHACAT_SITE_KEY = "bd1cc81c04564d3f899e" # Just an example sitekey so the widget shows up
+BYEBOT_API_KEY = ""
+BYEBOT_SITE_KEY = "bd1cc81c04564d3f899e" # Just an example sitekey so the widget shows up
 
 
 def validate_captcha_token(token: str) -> dict:
     """Validate the CAPTCHA token with the server."""
     try:
         response = requests.post(
-            "https://challenge.captchacat.com/validate_token",
-            json={"api_key": CAPTCHACAT_API_KEY, "token": token},
+            "https://challenge.byebot.de/validate_token",
+            json={"api_key": BYEBOT_API_KEY, "token": token},
             headers={"Content-Type": "application/json"},
             timeout=10,
         )
@@ -26,19 +26,19 @@ def validate_captcha_token(token: str) -> dict:
 
 @app.route("/")
 def index():
-    return render_template("index.html", site_key=CAPTCHACAT_SITE_KEY)
+    return render_template("index.html", site_key=BYEBOT_SITE_KEY)
 
 
 @app.route("/submit", methods=["POST"])
 def submit():
     username = request.form.get("username", "")
     password = request.form.get("password", "")
-    token = request.form.get("captchacat-token", "")
+    token = request.form.get("byebot-token", "")
 
     if not token:
         return render_template(
             "index.html",
-            site_key=CAPTCHACAT_SITE_KEY,
+            site_key=BYEBOT_SITE_KEY,
             error="Please complete the CAPTCHA",
         )
 
@@ -54,7 +54,7 @@ def submit():
     else:
         return render_template(
             "index.html",
-            site_key=CAPTCHACAT_SITE_KEY,
+            site_key=BYEBOT_SITE_KEY,
             error=f"CAPTCHA validation failed: {result.get('message', 'Unknown error')}",
         )
 

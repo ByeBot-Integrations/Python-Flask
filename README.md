@@ -1,6 +1,6 @@
-# Captchacat - Flask Example
+# Byebot - Flask Example
 
-A Flask application demonstrating Captchacat integration.
+A Flask application demonstrating Byebot integration.
 
 ## Installation
 
@@ -13,8 +13,8 @@ pip install -r requirements.txt
 Edit the values at the top of `app.py`:
 
 ```python
-CAPTCHACAT_API_KEY = "your-api-key"
-CAPTCHACAT_SITE_KEY = "your-site-key"
+BYEBOT_API_KEY = "your-api-key"
+BYEBOT_SITE_KEY = "your-site-key"
 ```
 
 ## Usage
@@ -27,16 +27,16 @@ Visit `http://localhost:5000`
 
 ## How It Works
 
-1. **Frontend**: The widget is loaded via `<script src="https://challenge.captchacat.com/ray/widget.js">`. A div with `class="captcha-widget"` and `data-sitekey` attribute renders the CAPTCHA.
+1. **Frontend**: The widget is loaded via `<script src="https://challenge.byebot.de/ray/widget.js">`. A div with `class="captcha-widget"` and `data-sitekey` attribute renders the CAPTCHA.
 
-2. **Token Submission**: On verification, the widget adds a hidden `captchacat-token` field to the form.
+2. **Token Submission**: On verification, the widget adds a hidden `byebot-token` field to the form.
 
 3. **Server Validation**: POST the token to `/validate_token`:
 
 ```python
 response = requests.post(
-    "https://challenge.captchacat.com/validate_token",
-    json={"api_key": CAPTCHACAT_API_KEY, "token": token}
+    "https://challenge.byebot.de/validate_token",
+    json={"api_key": BYEBOT_API_KEY, "token": token}
 )
 # 200 OK = valid token
 ```
